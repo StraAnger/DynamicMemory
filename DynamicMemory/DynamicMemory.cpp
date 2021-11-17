@@ -1,16 +1,7 @@
-#include<iostream>
-using namespace std;
-using std::cin;
-using std::cout;
-using std::endl;;
-
-void FillRand(int arr[], const unsigned int n, int minRand = 0, int maxRand = 100);
-void FillRand(double arr[], const unsigned int n, int minRand = 0, int maxRand = 100);
-void FillRand(int** arr, const int rows, const int cols);
-void FillRand(double** arr, const int rows, const int cols);
-
-template<typename T>void Print(T arr[], const unsigned int n);
-template<typename T>void Print(T** arr, const int rows, const int cols);
+#include"stdafx.h"
+#include"FillRand.h"//Если функция НЕ шаблонная, то *.cpp-файл НИ В КОЕМ СЛУЧАЕ НЕ ПОДКЛЮЧАЕТСЯ
+#include"Print.h"
+#include"Print.cpp"	//Если функция шаблонная, то подключается еще и *.cpp-файл
 
 template<typename T>T* push_back(T arr[], unsigned int& n, T value);
 template<typename T>T* push_front(T arr[], unsigned int& n, T value);
@@ -33,8 +24,12 @@ template<typename T>void push_col_back(T** arr, const unsigned int rows, unsigne
 #define DYNAMIC_MEMORY_2
 //#define PREFORMANCE_CHECK
 
+//#ifdef	- #if defined		(если определено)
+//#ifndef	- #if not defined	(если НЕ определено)
+
 void main()
 {
+	using namespace std;
 	setlocale(LC_ALL, "");
 #ifdef DYNAMIC_MEMORY_1
 	unsigned int n;	//Размер массива
@@ -117,66 +112,7 @@ void main()
 
 }
 
-void FillRand(int arr[], const unsigned int n, int minRand, int maxRand)
-{
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = rand() % (maxRand - minRand) + minRand;
-	}
-}
-void FillRand(double arr[], const unsigned int n, int minRand, int maxRand)
-{
-	minRand *= 100;
-	maxRand *= 100;
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = rand() % (maxRand - minRand) + minRand;
-		arr[i] /= 100;
-	}
-}
 
-void FillRand(int** arr, const int rows, const int cols)
-{
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = 0; j < cols; j++)
-		{
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(double** arr, const int rows, const int cols)
-{
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = 0; j < cols; j++)
-		{
-			arr[i][j] = rand() % 10000;
-			arr[i][j] /= 100;
-		}
-	}
-}
-
-template<typename T>void Print(T arr[], const unsigned int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	cout << endl;
-}
-template<typename T>void Print(T** arr, const int rows, const int cols)
-{
-	for (int i = 0; i < rows; i++)
-	{
-		//cout << arr[i] << ":\t";
-		for (int j = 0; j < cols; j++)
-		{
-			cout << arr[i][j] << "\t";
-		}
-		cout << endl;
-	}
-}
 
 template<typename T>T* push_back(T arr[], unsigned int& n, T value)
 {

@@ -140,8 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DynamicMemory.cpp" />
+    <ClCompile Include="FillRand.cpp" />
+    <ClCompile Include="Print.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FillRand.h" />
+    <ClInclude Include="Print.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
